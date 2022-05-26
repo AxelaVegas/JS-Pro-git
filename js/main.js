@@ -17,7 +17,7 @@ const renderProduct = (item) => {
 const renderPage = list => {
     const productsList = list.map(item => renderProduct(item));
     console.log(productsList);
-    /* Создал строчный элемент, в который переписал массив с разметкой. Запятой больше нет */
+    /* Создал строчный элемент, в который переписал массив с разметкой. Запятой  больше нет */
     let strProdList = '';
     productsList.forEach(element => {
         strProdList += element;
