@@ -1,28 +1,94 @@
-const products = [
-    {id: 1, title: 'Notebook', price: 2000, img: 'https://picsum.photos/id/0/250/200'},
-    {id: 2, title: 'Mouse', price: 20, img: 'https://picsum.photos/id/201/250/200'},
-    {id: 3, title: 'Keyboard', price: 200, img: 'https://picsum.photos/id/366/250/200'},
-    {id: 4, title: 'Gamepad', price: 50, img: 'https://picsum.photos/id/486/250/200'}
-];
-//Функция для формирования верстки каждого товара
-//Добавить в выводе изображение
-const renderProduct = (item) => {
-    return `<div class="product-item">
-                <h3>${item.title}</h3>
-                <img src="${item.img}">
-                <p>PRICE: ${item.price}</p>
+class ProductList{
+    constructor(container='.products'){
+        this.container = container;
+        this.goods = [];
+        this._fetchProducts();//рекомендация, чтобы метод был вызван в текущем классе
+        this.render();//вывод товаров на страницу
+    }
+    _fetchProducts(){
+        this.goods = [
+            {id: 1, title: 'Notebook', price: 2000},
+            {id: 2, title: 'Mouse', price: 20},
+            {id: 3, title: 'Keyboard', price: 200},
+            {id: 4, title: 'Gamepad', price: 50},
+        ];
+    }
+    
+    render(){
+        const block = document.querySelector(this.container);
+        for(let product of this.goods){
+             const item = new ProductItem(product);
+             block.insertAdjacentHTML("beforeend",item.render());
+             // block.innerHTML += item.render();
+        }
+    }
+
+// метод рассчета суммы товаров
+    _sumGoodsPrice(){
+        let sum = 0;
+        for(let product of this.goods){
+            sum += product.price;
+        }
+        alert(`Сумма цен товаров каталога: ${sum}`);
+    }
+}
+
+class ProductItem{
+    constructor(product,img='https://via.placeholder.com/200x150'){
+        this.title = product.title;
+        this.id = product.id;
+        this.price = product.price;
+        this.img = img;
+    }
+    render(){
+           return `<div class="product-item">
+                <img src="${this.img}">
+                <h3>${this.title}</h3>
+                <p>${this.price}</p>
                 <button class="buy-btn">Купить</button>
             </div>`
-};
-const renderPage = list => {
-    const productsList = list.map(item => renderProduct(item));
-    console.log(productsList);
-    /* Создал строчный элемент, в который переписал массив с разметкой. Запятой  больше нет */
-    let strProdList = '';
-    productsList.forEach(element => {
-        strProdList += element;
-    });
-    document.querySelector('.products').innerHTML = strProdList;
-};
+    }
+}
 
-renderPage(products);
+class Cart{
+    addItem() {
+
+    }
+
+    delItem() {
+
+    }
+
+    increasQuantityItem() {
+
+    }
+
+    render() {
+
+    }
+}
+
+class CartItem{
+    render() {
+
+    }
+}
+
+//const products = [
+//    {id: 1, title: 'Notebook', price: 2000},
+//    {id: 2, title: 'Mouse', price: 20},
+//    {id: 3, title: 'Keyboard', price: 200},
+//    {id: 4, title: 'Gamepad', price: 50},
+//];
+//
+//const renderProduct = (product,img='https://placehold.it/200x150') => {
+//    return `<div class="product-item">
+//                <img src="${img}">
+//                <h3>${product.title}</h3>
+//                <p>${product.price}</p>
+//                <button class="buy-btn">Купить</button>
+//            </div>`
+//};
+//const renderPage = list => document.querySelector('.products').innerHTML = list.map(item => renderProduct(item)).join('');
+//
+//renderPage(products);

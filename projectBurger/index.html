@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Burger project</title>
+</head>
+<body>
+    <h1>Конструктор БУРГЕРА</h1>
+    <form action="#" id="burger-form" style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="burger-size" style="border: 1px solid black; width: 280px;">
+            <input type="radio" name="size" id="big-burger" value="big" data-price="100" data-calory="40">
+            <label for="big-burger"><span style="font-size: 20px;">Большой Бургер</span><br> Цена: 100р. Калорийность: 40 кКал</label>
+            <br>
+            <input type="radio" name="size" id="junior-burger" value="junior" data-price="50" data-calory="20">
+            <label for="junior-burger"><span style="font-size: 20px;">Джуниор Бургер</span><br> Цена: 50р. Калорийность: 20 кКал</label>
+        </div>
+
+        <div class="burger-filling" style="border: 1px solid black; width: 280px;">
+            <input type="radio" name="filling" id="cheese" value="cheese" data-price="10" data-calory="20">
+            <label for="cheese"><span style="font-size: 20px;">Три Сыра</span><br> Цена: +10р. Калорийность: +20 кКал</label>
+            <br>
+            <input type="radio" name="filling" id="salad" value="salad" data-price="20" data-calory="5">
+            <label for="salad"><span style="font-size: 20px;">Сочный Салат</span><br> Цена: +20р. Калорийность: +5 кКал</label>
+            <br>
+            <input type="radio" name="filling" id="potato" value="potato" data-price="15" data-calory="10">
+            <label for="potato"><span style="font-size: 20px;">Картошка</span><br> Цена: +15р. Калорийность: +10 кКал</label>
+        </div>
+
+        <div class="burger-add" style="border: 1px solid black; width: 280px;">
+            <input type="checkbox" name="add" id="spice" value="spice" data-price="15" data-calory="0">
+            <label for="spice"><span style="font-size: 20px;">Острая Приправа</span><br> Цена: +15р. Калорийность: +0 кКал</label>
+            <br>
+            <input type="checkbox" name="add" id="sauce" value="sauce" data-price="20" data-calory="5">
+            <label for="sauce"><span style="font-size: 20px;">Сладкий соус</span><br> Цена: +20р. Калорийность: +5 кКал</label>
+        </div>    
+    </form>
+    <div class="div-button" style="width: 180px; height: 40px; border: 1px solid black; background-color: rgb(188, 188, 188); display: flex; align-items: center; justify-content: center; margin-top: 20px; cursor: pointer;">
+        Собрать Бургер
+    </div>
+    <div style="margin-top: 20px;">
+        Стоимость Вашего бургера:
+        <div class="div-result-price">
+            0
+        </div>
+        Калорийность Вашего бургера:
+        <div class="div-result-calory">
+            0
+        </div>
+    </div>
+    <script src="burger.js"></script>
+    <script>
+        let but = document.querySelector('.div-button');
+        but.addEventListener('click', () => {
+            let burger = new Burger('size', 'filling');
+        });
+    </script>
+</body>
+</html>
