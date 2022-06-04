@@ -1,17 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="./style/style.css">
-<head>
-    <meta charset="UTF-8">
-    <title>Интернет-магазин</title>
-</head>
-<body>
-    <header class="head">
-        <button class="btn-cart" type="button">Корзина</button>
-    </header>
-    <main>
-        <div class="products"></div>
-    </main>
-    <script src="js/main.js"></script>
-</body>
-</html>
+<meta charset="UTF-8">
+
+<div>
+    One: 'Hi Mary.' <br>
+    Two: 'Oh, hi.' <br>
+    One: 'How are you doing?' <br>
+    Two: 'I'm doing alright. How about you?' <br>
+    One: 'Not too bad. The weather is great isn't it?' <br>
+    Two: 'Yes. It's absolutely beautiful today.' <br>
+    One: 'I wish it was like this more frequently.' <br>
+    Two: 'Me too.' <br>
+    One: 'So where are you going now?' <br>
+    Two: 'I'm going to meet a friend of mine at the department store.' <br>
+    One: 'Going to do a little shopping?' <br>
+    Two: 'Yeah, I have to buy some presents for my parents.' <br>
+    One: 'What's the occasion?' <br>
+    Two: 'It's their anniversary.' <br>
+    One: 'That's great. Well, you better get going. You don't want to be late.' <br>
+    Two: 'I'll see you next time.' <br>
+    One: 'Sure. Bye.' 
+</div>
+<div class="first-case" style="cursor: pointer; display: inline-block; padding: 5px; border: 1px solid black;">
+    1 вариант замены
+</div>
+<div class="second-case" style="cursor: pointer; display: inline-block; padding: 5px; border: 1px solid black;">
+    2 вариант замены
+</div>
+
+<script>
+class Dialog{
+    constructor(text,find,replace){
+        this.text=document.querySelector('div').innerHTML;
+        this.find="'";
+        this.replace='"';
+        this._init();
+    }
+    replaceText(){
+        /* const text = this.text;
+        const regexp = /'/g;
+        document.querySelector('div').innerHTML = text.replace(regexp,this.replace); */
+        const text = this.text;
+        const regexp = new RegExp(this.find, 'g');
+        document.querySelector('div').innerHTML = text.replace(regexp,this.replace);
+    }
+    replaceText2(){
+/*         const text = this.text;
+        const regexp = /('\s)|(\s')/g;
+        document.querySelector('div').innerHTML = text.replace(regexp, this.replace); */
+
+        const text = this.text;
+        const regexp = /'(?=\s|[A-Z])/g;
+        document.querySelector('div').innerHTML = text.replace(regexp, this.replace);
+
+    }
+    _init(){
+        let case1 = document.querySelector('.first-case');
+        case1.addEventListener('click', ()=>{
+            this.replaceText();
+        });
+        let case2 = document.querySelector('.second-case');
+        case2.addEventListener('click', ()=>{
+            this.replaceText2();
+        });
+    }
+
+}
+let dialog = new Dialog();
+</script>
