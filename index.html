@@ -1,17 +1,147 @@
-<!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="./style/style.css">
-<head>
-    <meta charset="UTF-8">
-    <title>Интернет-магазин</title>
-</head>
-<body>
-    <header class="head">
-        <button class="btn-cart" type="button">Корзина</button>
-    </header>
-    <main>
-        <div class="products"></div>
-    </main>
-    <script src="js/main.js"></script>
-</body>
-</html>
+<meta charset="UTF-8">
+
+<div>
+    One: 'Hi Mary.' <br>
+    Two: 'Oh, hi.' <br>
+    One: 'How are you doing?' <br>
+    Two: 'I'm doing alright. How about you?' <br>
+    One: 'Not too bad. The weather is great isn't it?' <br>
+    Two: 'Yes. It's absolutely beautiful today.' <br>
+    One: 'I wish it was like this more frequently.' <br>
+    Two: 'Me too.' <br>
+    One: 'So where are you going now?' <br>
+    Two: 'I'm going to meet a friend of mine at the department store.' <br>
+    One: 'Going to do a little shopping?' <br>
+    Two: 'Yeah, I have to buy some presents for my parents.' <br>
+    One: 'What's the occasion?' <br>
+    Two: 'It's their anniversary.' <br>
+    One: 'That's great. Well, you better get going. You don't want to be late.' <br>
+    Two: 'I'll see you next time.' <br>
+    One: 'Sure. Bye.'
+</div>
+<div class="first-case" style="cursor: pointer; display: inline-block; padding: 5px; border: 1px solid black;">
+    1 вариант замены
+</div>
+<div class="second-case" style="cursor: pointer; display: inline-block; padding: 5px; border: 1px solid black;">
+    2 вариант замены
+</div>
+
+<form action="#" class="reg-form" style="margin-top: 50px;">
+
+    <input class="correct" type="text" name="name" id="name" placeholder="Введите ваше имя"
+        style="width: 250px; margin-top: 10px;">
+    <label for="name"></label><br>
+    <input class="correct" type="text" name="phone" id="phone" placeholder="Введите номер телефона"
+        style="width: 250px; margin-top: 10px;">
+    <label for="phone"></label><br>
+    <input class="correct" type="text" name="mail" id="mail" placeholder="Введите вашу почту"
+        style="width: 250px; margin-top: 10px;">
+    <label for="mail"></label><br>
+    <textarea name="text" id="text" cols="30" rows="10" style="width: 250px; margin-top: 10px;"></textarea><br>
+    <div class="btn-form" style="width: 250px; margin-top: 10px; cursor: pointer; border: 1px solid black;">
+        Проверить данные формы
+    </div>
+
+
+
+</form>
+
+<style>
+    .correct {
+        border: 1px solid rgb(0, 255, 0);
+    }
+
+    .error {
+        border: 1px solid red;
+    }
+</style>
+
+<script>
+    class Dialog {
+        constructor(text, find, replace) {
+            this.text = document.querySelector('div').innerHTML;
+            this.find = "'";
+            this.replace = '"';
+            this._init();
+        }
+        replaceText() {
+            const text = this.text;
+            const regexp = new RegExp(this.find, 'g');
+            document.querySelector('div').innerHTML = text.replace(regexp, this.replace);
+        }
+        replaceText2() {
+            const text = this.text;
+            const regexp = /'(?=\s|[A-Z])/g;
+            document.querySelector('div').innerHTML = text.replace(regexp, this.replace);
+        }
+        _init() {
+            let case1 = document.querySelector('.first-case');
+            case1.addEventListener('click', () => {
+                this.replaceText();
+            });
+            let case2 = document.querySelector('.second-case');
+            case2.addEventListener('click', () => {
+                this.replaceText2();
+            });
+        }
+    }
+
+    class RegForm {
+        constructor(name, phone, mail, text) {
+            this.name = new FormItem(document.querySelector('#name').value, document.querySelector('#name').name);
+            this.phone = new FormItem(document.querySelector('#phone').value, document.querySelector('#phone')
+                .name);
+            this.mail = new FormItem(document.querySelector('#mail').value, document.querySelector('#mail').name);
+            this.text = document.querySelector('#text').value;
+            this.checkFormItem(this.name);
+            this.checkFormItem(this.phone);
+            this.checkFormItem(this.mail);
+        }
+        checkFormItem(obj) {
+            const regExp = obj.rule;
+            let inputBox = document.querySelector(`#${obj.name}`);
+            if (regExp.test(obj.value)) {
+                console.log(`${obj.name} введено корректно`);
+                inputBox.classList.remove("error");
+                inputBox.classList.add("correct");
+                inputBox.nextElementSibling.innerHTML = 'поле заполненно корректно';
+            } else {
+                console.log(`${obj.name} ОШИБКА ввода`);
+
+                inputBox.classList.remove("correct");
+                inputBox.classList.add("error");
+                inputBox.nextElementSibling.innerHTML = this.renderRule(obj.inputRule);
+            }
+        }
+        renderRule(inputRule) {
+            return `<label id = "del">
+                    ${inputRule}
+                </label>`
+        }
+    }
+
+    class FormItem {
+        constructor(value, name) {
+            this.value = value;
+            this.name = name;
+            const ruleAll = {
+                name: /^[a-zа-яё]+$/i,
+                phone: /^\+7\(\d{3}\)\d{3}-\d{4}$/,
+                mail: /^[\w._-]+@\w+\.[a-z]{2,4}$/i
+            };
+            const inputRule = {
+                name: 'Имя должно содержать только буквы',
+                phone: 'Телефон должен имеет вид +7(000)000-0000',
+                mail: 'E-mail должен имеет вид mymail@mail.ru, или my.mail@mail.ru, или my-mail@mail.ru'
+            };
+            this.rule = ruleAll[name];
+            this.inputRule = inputRule[name];
+        }
+    }
+
+    document.querySelector('.btn-form').addEventListener('click', () => {
+        let a = new RegForm();
+    });
+
+    let dialog = new Dialog();
+</script>
