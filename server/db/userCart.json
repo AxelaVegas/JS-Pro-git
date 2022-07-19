@@ -1,0 +1,14 @@
+{
+    "amount": 1100,
+    "countGoods": 2,
+    "contents": [
+        {
+            "quantity": 3,
+            "id_product": 2,
+            "product_name": "Black Dress",
+            "description": "Known for her sculptural takes on traditional\ntailoring, Australian arbiter of cool Kym Ellery teams\nup with Moda Operandi.",
+            "price": 2300,
+            "img": "img/prod-2.jpg"
+        }
+    ]
+}

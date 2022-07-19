@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5dc7157857.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script defer src="js/components/header-comp.js"></script>
+    <script defer src="js/components/promo-comp.js"></script>
+    <script defer src="js/components/main-comp.js"></script>
+    <script defer src="js/components/profit-comp.js"></script>
+    <script defer src="js/components/reviews-comp.js"></script>
+    <script defer src="js/components/footer-comp.js"></script>
+
+    <script defer src="js/main.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <header-comp ref="cart"></header-comp>
+        <promo-comp></promo-comp>
+        <main-comp></main-comp>
+        <profit-comp></profit-comp>
+        <reviews-comp></reviews-comp>
+        <footer-comp></footer-comp>
+    </div>
+
+</body>
+
+</html>
