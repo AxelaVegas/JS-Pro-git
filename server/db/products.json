@@ -1,0 +1,37 @@
+[{
+  "id_product": 1,
+  "product_name": "Blue Jacket",
+  "description": "Known for her sculptural takes on traditional\ntailoring, Australian arbiter of cool Kym Ellery teams\nup with Moda Operandi.",
+  "price": 1200
+},
+  {
+    "id_product": 2,
+    "product_name": "Black Dress",
+    "description": "Known for her sculptural takes on traditional\ntailoring, Australian arbiter of cool Kym Ellery teams\nup with Moda Operandi.",
+    "price": 2300
+  },
+  {
+    "id_product": 3,
+    "product_name": "Beige Shorts",
+    "description": "Known for her sculptural takes on traditional\ntailoring, Australian arbiter of cool Kym Ellery teams\nup with Moda Operandi.",
+    "price": 700
+  },
+  {
+    "id_product": 4,
+    "product_name": "Yellow Trousers",
+    "description": "Known for her sculptural takes on traditional\ntailoring, Australian arbiter of cool Kym Ellery teams\nup with Moda Operandi.",
+    "price": 900
+  },
+  {
+    "id_product": 5,
+    "product_name": "Business Style",
+    "description": "Known for her sculptural takes on traditional\ntailoring, Australian arbiter of cool Kym Ellery teams\nup with Moda Operandi.",
+    "price": 2600
+  },
+  {
+    "id_product": 6,
+    "product_name": "Free Style",
+    "description": "Known for her sculptural takes on traditional\ntailoring, Australian arbiter of cool Kym Ellery teams\nup with Moda Operandi.",
+    "price": 1900
+  }
+]
